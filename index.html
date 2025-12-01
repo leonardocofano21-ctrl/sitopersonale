@@ -5,212 +5,373 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Il tuo nome – UI/UX Designer</title>
   <style>
-    :root {
-      --bg: #f9f9f9;
-      --text: #222;
-      --text-secondary: #555;
-      --card-bg: #f3f3f3;
-      --card-hover: #eaeaea;
-      --accent: #0066ff;
-      --header-bg: white;
-      --transition-speed: 0.4s;
+    :root{
+      --bg: #0f0f13;
+      --text: #eaeaf0;
+      --text-secondary: #bfbfd6;
+      --card-bg: #141418;
+      --card-hover: #1a1630;
+      --accent: #6756BE;
+      --header-bg: #0f0f13;
+      --transition-speed: 0.28s;
+      --glass: rgba(255,255,255,0.03);
+      --linkedin-hover: #0072B1;
     }
 
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition:background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+      padding-top: 95px; /* per compensare la navbar fixed */
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 5%;
-      background-color: var(--header-bg);
-      border-bottom: 1px solid #eee;
-      transition: background-color var(--transition-speed) ease;
+    header{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:1.5rem 5%;
+      background:linear-gradient(180deg, rgba(15,15,19,0.85), rgba(15,15,19,0.60) 65%, transparent);
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      transition: padding 0.3s ease, box-shadow 0.3s ease;
     }
 
-    nav a, .social a {
-      margin: 0 0.5rem;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      background-color: var(--card-bg);
-      padding: 0.6rem 1.2rem;
-      border-radius: 9999px;
-      transition: background-color 0.2s ease, color 0.2s ease;
+    header.scrolled{
+      padding:0.8rem 5%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
 
-    nav a:hover, .social a:hover {
-      background-color: var(--text);
-      color: white;
+    nav{display:flex; gap:0.25rem; align-items:center;}
+    nav a, .social a{
+      margin:0 0.25rem;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:500;
+      background:var(--glass);
+      padding:0.55rem 1rem;
+      border-radius:9999px;
+      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform 0.18s ease;
+      border:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(4px);
     }
 
-    .social {
-      display: flex;
-      align-items: center;
+    nav a.active{
+      background:var(--accent);
+      color:#fff;
     }
 
-    .hero {
-      padding: 6rem 5% 8rem 5%;
-      text-align: center;
+    nav a:hover{
+      background:var(--accent);
+      color:white;
+      transform:translateY(-2px);
+      box-shadow: 0 6px 18px rgba(103,86,190,0.15);
     }
 
-    .profile-pic {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 2.5rem auto;
-      border: 4px solid #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    .social{display:flex; align-items:center; gap:0.5rem;}
+    .social a:hover{background:var(--linkedin-hover); color:white;}
+
+    .hero{
+      padding:5.5rem 5% 6.5rem;
+      text-align:center;
+      max-width:1100px;
+      margin:0 auto;
     }
 
-    .hero h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+    .profile-pic{
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      object-fit:cover;
+      display:block;
+      margin:0 auto 1.75rem;
+      border:3px solid rgba(103,86,190,0.15);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6), 0 0 30px rgba(103,86,190,0.03) inset;
     }
 
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto;
+    .hero h2{
+      font-size:2.4rem;
+      font-weight:700;
+      margin:0 0 1rem;
+      letter-spacing:-0.02em;
     }
 
-    .projects {
-      padding: 5rem 5%;
-      background-color: var(--header-bg);
-      transition: background-color var(--transition-speed) ease;
+    .hero p{
+      font-size:1.05rem;
+      color:var(--text-secondary);
+      max-width:820px;
+      margin:0 auto;
     }
 
-    .projects h3 {
-      font-size: 1.75rem;
-      margin-bottom: 2rem;
-      text-align: center;
+    .projects{
+      padding:3.5rem 5%;
+      max-width:1200px;
+      margin:0 auto;
     }
 
-    .project-grid {
-      display: grid;
+    .projects h3{
+      font-size:1.6rem;
+      margin-bottom:1.4rem;
+      text-align:center;
+      color:var(--text);
+    }
+
+    .project-grid{
+      display:grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      gap:1.6rem;
     }
 
-    .project {
-      background-color: var(--card-bg);
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: left;
-      transition: background-color 0.2s ease;
+    .project{
+      background:var(--card-bg);
+      border-radius:12px;
+      padding:1rem;
+      overflow:hidden;
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+      border:1px solid rgba(255,255,255,0.03);
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
     }
 
-    .project:hover {
-      background-color: var(--card-hover);
+    .project:hover{
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 8px 30px rgba(103,86,190,0.07);
     }
 
-    .project h4 {
-      margin-bottom: 0.5rem;
-      font-weight: 600;
+    .project-preview{
+      display:flex;
+      gap:1rem;
+      align-items:flex-start;
     }
 
-    .contact {
-      padding: 5rem 5%;
-      text-align: center;
+    .preview-thumb{
+      width:110px;
+      height:70px;
+      flex:0 0 110px;
+      border-radius:8px;
+      object-fit:cover;
+      background:#222;
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6) inset;
     }
 
-    .contact h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+    .preview-content{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:0.35rem;
     }
 
-    .contact a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 5%;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      border-top: 1px solid #eee;
+    .project h4{
+      margin:0;
+      font-size:1.05rem;
+      font-weight:700;
+      color:var(--text);
       transition: color var(--transition-speed) ease;
     }
 
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        gap: 1rem;
-      }
+    .project:hover h4{ color:var(--accent); }
 
-      .hero h2 {
-        font-size: 2rem;
-      }
+    .project p{
+      margin:0;
+      color:var(--text-secondary);
+      font-size:0.95rem;
+    }
 
-      nav a, .social a {
-        padding: 0.5rem 1rem;
+    .project-meta{
+      margin-top:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+    }
+
+    .pill{
+      font-size:0.82rem;
+      padding:0.35rem 0.6rem;
+      border-radius:999px;
+      background:rgba(255,255,255,0.02);
+      color:var(--text-secondary);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .project a.cta{
+      text-decoration:none;
+      background:transparent;
+      color:var(--accent);
+      font-weight:600;
+      border-radius:8px;
+      padding:0.45rem 0.7rem;
+      border:1px solid rgba(103,86,190,0.15);
+      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform 0.12s ease;
+    }
+
+    .project a.cta:hover{
+      background:var(--accent);
+      color:#fff;
+      transform:translateY(-2px);
+      box-shadow: 0 8px 20px rgba(103,86,190,0.12);
+    }
+
+    .contact{
+      padding:3.5rem 5%;
+      text-align:center; /* default centrato */
+      max-width:900px;
+      margin:0 auto 3rem;
+    }
+
+    .contact h3{ font-size:1.25rem; margin-bottom:0.6rem; color:var(--text); }
+    .contact a{ color:var(--accent); text-decoration:none; font-weight:600; }
+
+    footer{
+      text-align:center;
+      padding:2rem 5%;
+      font-size:0.9rem;
+      color:var(--text-secondary);
+      border-top:1px solid rgba(255,255,255,0.03);
+    }
+
+    @media (max-width:700px){
+      .preview-thumb{ width:96px; height:60px; flex:0 0 96px; }
+      .hero{
+        padding:4.5rem 5% 5.5rem;
+        text-align:left;
       }
+      .profile-pic{
+        margin:0 0 1.75rem 0;
+      }
+      .contact{
+        text-align:left; /* solo su mobile */
+      }
+    }
+
+    @media (max-width:420px){
+      header{ padding:1rem 4%; }
+      nav a, .social a{ padding:0.45rem 0.8rem; font-size:0.95rem; }
+      .project-grid{ gap:1rem; }
     }
   </style>
 </head>
-
 <body>
+
   <header>
     <nav>
       <a href="#projects">Progetti</a>
       <a href="#contact">Contatti</a>
     </nav>
-
     <div class="social">
-      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.76-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.27h-3v-5.604c0-1.337-.025-3.061-1.866-3.061-1.867 0-2.154 1.46-2.154 2.968v5.697h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.561 2.838-1.561 3.034 0 3.594 1.997 3.594 4.59v5.604z"/>
+        </svg>
+      </a>
     </div>
   </header>
 
-  <section class="hero" id="about">
-    <img src="https://via.placeholder.com/160" alt="Foto profilo" class="profile-pic" />
-    <h2>Ciao, sono [Il tuo nome]</h2>
-    <p>
-      Il mio percorso professionale nasce dalla passione per il disegno coltivata sin da bambino e si evolve con l’interesse per il design dei prodotti Apple, riferimento importante per molti della mia generazione (2001).<br><br>
-      Mi diplomo in un istituto tecnico a Bologna all’inizio della pandemia e mi laureo all’Accademia di Belle Arti in Design, dove approfondisco interior e product design. Adesso sto completando un master in UX/UI design e svolgo un tirocinio in una web agency a Bologna.
-      <br><br>
-      Come progettista punto sull’empatia e sulla cura del dettaglio, perché li reputo gli elementi che trasformano un servizio digitale da buono a ottimo. Progetto esperienze intuitive e appaganti, con l’obiettivo di rendere la vita un pochino migliore a chi le utilizza.
-    </p>
-  </section>
+  <main>
+    <section class="hero" id="about">
+      <img src="https://via.placeholder.com/320x320.png?text=Foto" alt="Foto profilo" class="profile-pic" />
+      <h2>Ciao, sono Leonardo</h2>
+      <p>
+       Il mio percorso professionale nasce dalla passione per il disegno coltivata sin da bambino e si evolve con l’interesse per il design dei prodotti Apple, riferimento importante per molti della mia generazione (2001).
+       <br><br>Mi diplomo in un istituto tecnico a Bologna all’inizio della pandemia e mi laureo all’Accademia di Belle Arti in Design, dove approfondisco interior e product design. Adesso sto completando un master in UX/UI design e svolgo un tirocinio in una web agency a Bologna. Come progettista punto sull’empatia e sulla cura del dettaglio, perché li reputo gli elementi che trasformano un servizio digitale da buono a ottimo. Progetto esperienze intuitive e appaganti, con l’obiettivo di rendere la vita un pochino migliore a chi le utilizza.
+      </p>
+    </section>
 
-  <section class="projects" id="projects">
-    <h3>Progetti selezionati</h3>
-    <div class="project-grid">
-      <div class="project">
-        <h4>Bloom App</h4>
-        <p>Un’app che guida la crescita personale attraverso interfacce empatiche e minimaliste.</p>
-      </div>
-      <div class="project">
-        <h4>Jojob Redesign</h4>
-        <p>Un ripensamento del flusso di carpooling aziendale con focus su accessibilità e chiarezza visiva.</p>
-      </div>
-      <div class="project">
-        <h4>Portfolio Concept</h4>
-        <p>Un esercizio visivo per esplorare l’identità digitale di un designer contemporaneo.</p>
-      </div>
-    </div>
-  </section>
+    <section class="projects" id="projects">
+      <h3>Progetti selezionati</h3>
+      <div class="project-grid">
+        <article class="project" aria-labelledby="p1-title">
+          <div class="project-preview">
+            <img class="preview-thumb" src="https://via.placeholder.com/440x260.png?text=Bloom+Preview" alt="Anteprima Bloom">
+            <div class="preview-content">
+              <h4 id="p1-title">Bloom App</h4>
+              <p>Interfacce empatiche che accompagnano l’utente in un percorso di crescita quotidiana.</p>
+            </div>
+          </div>
+          <div class="project-meta">
+            <span class="pill">Mobile • UX</span>
+            <a class="cta" href="#projects">Scopri</a>
+          </div>
+        </article>
 
-  <section class="contact" id="contact">
-    <h3>Contatti</h3>
-    <p>Scrivimi a</p>
-    <a href="mailto:tuoemail@example.com">tuoemail@example.com</a>
-  </section>
+        <article class="project" aria-labelledby="p2-title">
+          <div class="project-preview">
+            <img class="preview-thumb" src="https://via.placeholder.com/440x260.png?text=Jojob+Preview" alt="Anteprima Jojob">
+            <div class="preview-content">
+              <h4 id="p2-title">Jojob Redesign</h4>
+              <p>Riprogettazione del flow di carpooling aziendale con focus su accessibilità e onboarding.</p>
+            </div>
+          </div>
+          <div class="project-meta">
+            <span class="pill">Web • Accessibilità</span>
+            <a class="cta" href="#projects">Scopri</a>
+          </div>
+        </article>
+
+        <article class="project" aria-labelledby="p3-title">
+          <div class="project-preview">
+            <img class="preview-thumb" src="https://via.placeholder.com/440x260.png?text=Portfolio+Preview" alt="Anteprima Portfolio">
+            <div class="preview-content">
+              <h4 id="p3-title">Portfolio Concept</h4>
+              <p>Esperimento visivo su identità digitale, gerarchia tipografica e micro-interazioni.</p>
+            </div>
+          </div>
+          <div class="project-meta">
+            <span class="pill">Concept • Visual</span>
+            <a class="cta" href="#projects">Scopri</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h3>Contatti</h3>
+      <p>Scrivimi a</p>
+      <a href="mailto:leonardocofano21@gmail.com">leonardocofano21@gmail.com</a>
+    </section>
+  </main>
 
   <footer>
-    © 2025 Il tuo nome. Tutti i diritti riservati.
+    © 2025 Contenuti protetti: se ti piacciono chiedimi prima di rubarli (sono educato, giuro).
   </footer>
+
+  <script>
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 50){
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      const sections = document.querySelectorAll('main section');
+      const navLinks = document.querySelectorAll('nav a');
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const id = section.getAttribute('id');
+        if(rect.top <= 100 && rect.bottom >= 100){
+          navLinks.forEach(link => link.classList.remove('active'));
+          const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+          if(activeLink) activeLink.classList.add('active');
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
