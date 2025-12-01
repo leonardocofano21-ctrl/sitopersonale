@@ -80,20 +80,28 @@
     }
 
     .social a{
-  margin:0 0.25rem;
-  text-decoration:none;
-  color:var(--text);
-  font-weight:500;
-  background:var(--glass);
-  padding:0.55rem 1rem;
-  border-radius:9999px;
-  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform 0.18s ease;
-  border:1px solid rgba(255,255,255,0.03);
-  backdrop-filter: blur(4px);
-  display:flex;                 /* 🔥 aggiunto */
-  justify-content:center;       /* 🔥 aggiunto */
-  align-items:center;           /* 🔥 aggiunto */
-}
+      margin:0 0.25rem;
+      text-decoration:none;
+      color:var(--text);
+      font-weight:500;
+      background:var(--glass);
+      padding:0.55rem 0.65rem; /* 🔥 ridotto leggermente il padding orizzontale */
+      border-radius:9999px;
+      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform 0.18s ease;
+      border:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(4px);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-width:42px; /* 🔥 assicura un minimo di larghezza */
+      height:42px;    /* 🔥 pulsante più bilanciato */
+    }
+
+    .social a svg{
+      display:block;
+      width:20px;
+      height:20px;
+    }
 
     .social a:hover{background:var(--linkedin-hover); color:white;}
 
