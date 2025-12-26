@@ -81,25 +81,15 @@
     }
 
     .social a{
-      margin:0 0.25rem;
-      text-decoration:none;
-      color:var(--text);
-      font-weight:500;
-      background:var(--glass);
       padding:0.55rem 0.65rem;
-      border-radius:9999px;
-      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform 0.18s ease;
-      border:1px solid rgba(255,255,255,0.03);
-      backdrop-filter: blur(4px);
+      min-width:42px;
+      height:42px;
       display:flex;
       justify-content:center;
       align-items:center;
-      min-width:42px;
-      height:42px;
     }
 
     .social a svg{
-      display:block;
       width:20px;
       height:20px;
     }
@@ -124,21 +114,7 @@
       display:block;
       margin:0 auto 1.75rem;
       border:3px solid rgba(103,86,190,0.15);
-      box-shadow: 0 6px 30px rgba(0,0,0,0.6), 0 0 30px rgba(103,86,190,0.03) inset;
-    }
-
-    .hero h2{
-      font-size:2.4rem;
-      font-weight:700;
-      margin:0 0 1rem;
-      letter-spacing:-0.02em;
-    }
-
-    .hero p{
-      font-size:1.05rem;
-      color:var(--text-secondary);
-      max-width:820px;
-      margin:0 auto;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
     }
 
     .projects{
@@ -151,7 +127,6 @@
       font-size:1.6rem;
       margin-bottom:1.4rem;
       text-align:center;
-      color:var(--text);
     }
 
     .project-grid{
@@ -174,13 +149,12 @@
 
     .project:hover{
       transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 8px 30px rgba(103,86,190,0.07);
+      box-shadow: 0 10px 30px rgba(103,86,190,0.07);
     }
 
     .project-preview{
       display:flex;
       gap:1rem;
-      align-items:flex-start;
     }
 
     .preview-thumb{
@@ -190,22 +164,12 @@
       border-radius:8px;
       object-fit:cover;
       background:#222;
-      border:1px solid rgba(255,255,255,0.03);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6) inset;
-    }
-
-    .preview-content{
-      flex:1;
-      display:flex;
-      flex-direction:column;
-      gap:0.35rem;
     }
 
     .project h4{
       margin:0;
       font-size:1.05rem;
       font-weight:700;
-      color:var(--text);
       transition: color var(--transition-speed) ease;
     }
 
@@ -222,7 +186,6 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:1rem;
     }
 
     .pill{
@@ -249,7 +212,6 @@
       background:var(--accent);
       color:#fff;
       transform:translateY(-2px);
-      box-shadow: 0 8px 20px rgba(103,86,190,0.12);
     }
 
     .contact{
@@ -258,9 +220,6 @@
       max-width:900px;
       margin:0 auto 3rem;
     }
-
-    .contact h3{ font-size:1.25rem; margin-bottom:0.6rem; color:var(--text); }
-    .contact a{ color:var(--accent); text-decoration:none; font-weight:600; }
 
     footer{
       text-align:center;
@@ -272,22 +231,9 @@
 
     @media (max-width:700px){
       .preview-thumb{ width:96px; height:60px; flex:0 0 96px; }
-      .hero{
-        padding:4.5rem 5% 5.5rem;
-        text-align:left;
-      }
-      .profile-pic{
-        margin:0 0 1.75rem 0;
-      }
-      .contact{
-        text-align:left;
-      }
-    }
-
-    @media (max-width:420px){
-      header{ padding:1rem 4%; }
-      nav a, .social a{ padding:0.45rem 0.8rem; font-size:0.95rem; }
-      .project-grid{ gap:1rem; }
+      .hero{text-align:left;}
+      .profile-pic{margin:0 0 1.75rem 0;}
+      .contact{text-align:left;}
     }
   </style>
 </head>
@@ -300,8 +246,8 @@
     </nav>
 
     <div class="social">
-      <a href="https://www.linkedin.com/in/leonardocofano/" target="_blank" rel="noopener noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+      <a href="#" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
           <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.76-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.27h-3v-5.604c0-1.337-.025-3.061-1.866-3.061-1.867 0-2.154 1.46-2.154 2.968v5.697h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.561 2.838-1.561 3.034 0 3.594 1.997 3.594 4.59v5.604z"/>
         </svg>
       </a>
@@ -311,7 +257,7 @@
   <main>
     <section class="hero" id="about">
       <img 
-        src="https://github.com/leonardocofano21-ctrl/Provaport/blob/e73ef3865236d1488e0c96e38bbb91bd6a012598/FOTO_CV-min_cdkip1.jpg?raw=true" 
+        src="#" 
         alt="Foto profilo di Leonardo" 
         class="profile-pic" 
       />
@@ -325,37 +271,38 @@
     <section class="projects" id="projects">
       <h3>Progetti selezionati</h3>
       <div class="project-grid">
+
         <article class="project" aria-labelledby="p1-title">
           <div class="project-preview">
-            <img class="preview-thumb" src="https://via.placeholder.com/440x260.png?text=Bloom+Preview" alt="Anteprima Bloom">
+            <img class="preview-thumb" src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Jojob0000.png?raw=true" alt="Anteprima Jojob">
             <div class="preview-content">
               <h4 id="p1-title">Redesign Jojob</h4>
-              <p>Il redesign del sito di Jojob- carpooling aziendale. Lo trovi ai progetti 2 e 3 del mio portfolio</p>
+              <p>Il redesign del sito di Jojob - carpooling aziendale. Lo trovi ai progetti 2 e 3 del mio portfolio</p>
             </div>
           </div>
           <div class="project-meta">
             <span class="pill">UX/UI</span>
-            <a class="cta" href="#projects">Scopri</a>
+            <a class="cta" href="https://www.canva.com/design/DAGwgC73ckU/PRM7tf_RUlgKt7qBxyPsXw/edit?utm_content=DAGwgC73ckU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Scopri</a>
           </div>
         </article>
 
         <article class="project" aria-labelledby="p2-title">
           <div class="project-preview">
-            <img class="preview-thumb" src="https://via.placeholder.com/440x260.png?text=Jojob+Redesign" alt="Anteprima Jojob">
+            <img class="preview-thumb" src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Sunnee0000.jpg?raw=true" alt="Anteprima Sunnee">
             <div class="preview-content">
               <h4 id="p2-title">Brand Identity Sunnee</h4>
-              <p>Progettazioine della brand identity di Sunnee, un brand di beachwear. Progetto n°7 del portfolio</p>
+              <p>Progettazione della brand identity di Sunnee, un brand di beachwear. Progetto n°7 del portfolio</p>
             </div>
           </div>
           <div class="project-meta">
             <span class="pill">Graphic Design</span>
-            <a class="cta" href="#projects">Scopri</a>
+            <a class="cta" href="https://www.canva.com/design/DAGwgC73ckU/PRM7tf_RUlgKt7qBxyPsXw/edit?utm_content=DAGwgC73ckU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Scopri</a>
           </div>
         </article>
 
         <article class="project" aria-labelledby="p3-title">
           <div class="project-preview">
-            <img class="preview-thumb" src="https://via.placeholder.com/440x260.png?text=Portfolio+Concept" alt="Anteprima Portfolio">
+            <img class="preview-thumb" src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Very0000.jpg?raw=true" alt="Anteprima Very Mobile">
             <div class="preview-content">
               <h4 id="p3-title">Redesign Very Mobile</h4>
               <p>Redesign delle pagine principali di Very Mobile. Progetto n°1 del portfolio</p>
@@ -363,7 +310,7 @@
           </div>
           <div class="project-meta">
             <span class="pill">UX/UI</span>
-            <a class="cta" href="#projects">Scopri</a>
+            <a class="cta" href="https://www.canva.com/design/DAGwgC73ckU/PRM7tf_RUlgKt7qBxyPsXw/edit?utm_content=DAGwgC73ckU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Scopri</a>
           </div>
         </article>
 
@@ -373,7 +320,6 @@
     <section class="contact" id="contact">
       <h3>Contatti</h3>
       <p>Scrivimi a</p>
-
       <a href="mailto:leonardocofano21@gmail.com">leonardocofano21@gmail.com</a>
     </section>
   </main>
