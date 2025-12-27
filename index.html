@@ -1,350 +1,125 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ciao, mi chiamo Leonardo</title>
 
-  <style>
-    :root{
-      --bg: #0f0f13;
-      --text: #eaeaf0;
-      --text-secondary: #bfbfd6;
-      --card-bg: #141418;
-      --card-hover: #1a1630;
-      --accent: #6756BE;
-      --header-bg: #0f0f13;
-      --transition-speed: 0.28s;
-      --glass: rgba(255,255,255,0.03);
-      --linkedin-hover: #0072b1;
-    }
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    *{box-sizing:border-box}
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
 
-    body{
-      margin:0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      transition:background-color var(--transition-speed) ease, color var(--transition-speed) ease;
-      padding-top: 95px;
-    }
-
-    header{
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 999;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:1.5rem 5%;
-      background:linear-gradient(180deg, rgba(15,15,19,0.85), rgba(15,15,19,0.60) 65%, transparent);
-      backdrop-filter: blur(6px);
-      border-bottom:1px solid rgba(255,255,255,0.05);
-      transition: padding 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    header.scrolled{
-      padding:0.8rem 5%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-
-    nav{display:flex; gap:0.25rem; align-items:center;}
-    nav a, .social a{
-      margin:0 0.25rem;
-      text-decoration:none;
-      color:var(--text);
-      font-weight:500;
-      background:var(--glass);
-      padding:0.55rem 1rem;
-      border-radius:9999px;
-      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform 0.18s ease;
-      border:1px solid rgba(255,255,255,0.03);
-      backdrop-filter: blur(4px);
-    }
-
-    nav a.active{
-      background:var(--accent);
-      color:#fff;
-    }
-
-    nav a:hover{
-      background:var(--accent);
-      color:white;
-      transform:translateY(-2px);
-      box-shadow: 0 6px 18px rgba(103,86,190,0.15);
-    }
-
-    .social a{
-      padding:0.55rem 0.65rem;
-      min-width:42px;
-      height:42px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-
-    /* HOVER AGGIUNTO PER LINKEDIN */
-    .social a:hover{
-      background: var(--linkedin-hover);
-      color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0,114,177,0.15);
-    }
-
-    .social a svg{
-      flex-shrink: 0;
-      display: block;
-    }
-
-    .hero{
-      padding:5.5rem 5% 6.5rem;
-      text-align:center;
-      max-width:1100px;
-      margin:0 auto;
-    }
-
-    .profile-pic{
-      width:160px;
-      height:160px;
-      border-radius:50%;
-      object-fit:cover;
-      display:block;
-      margin:0 auto 1.75rem;
-      border:3px solid rgba(103,86,190,0.15);
-      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
-    }
-
-    .projects{
-      padding:3.5rem 5%;
-      max-width:1200px;
-      margin:0 auto;
-    }
-
-    .projects h3{
-      font-size:1.6rem;
-      margin-bottom:1.4rem;
-      text-align:center;
-    }
-
-    .project-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap:1.6rem;
-    }
-
-    .project{
-      background:var(--card-bg);
-      border-radius:12px;
-      padding:1rem;
-      display:flex;
-      flex-direction:column;
-      gap:1rem;
-      border:1px solid rgba(255,255,255,0.03);
-      overflow:hidden;
-      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    }
-
-    .project:hover{
-      transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(103,86,190,0.07);
-    }
-
-    .project-preview{
-      display:flex;
-      gap:1rem;
-    }
-
-    .preview-thumb{
-      width:110px;
-      height:70px;
-      border-radius:8px;
-      object-fit:cover;
-      background:#222;
-      flex:0 0 110px;
-    }
-
-    .project h4{
-      margin:0;
-      font-size:1.05rem;
-      font-weight:700;
-      transition: color var(--transition-speed) ease;
-    }
-
-    .project:hover h4{ color:var(--accent); }
-
-    .project p{
-      margin:0;
-      color:var(--text-secondary);
-      font-size:0.95rem;
-    }
-
-    .project-meta{
-      margin-top:auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .pill{
-      font-size:0.82rem;
-      padding:0.35rem 0.6rem;
-      border-radius:999px;
-      background:rgba(255,255,255,0.02);
-      color:var(--text-secondary);
-      border:1px solid rgba(255,255,255,0.02);
-    }
-
-    .project a.cta{
-      text-decoration:none;
-      background:transparent;
-      color:var(--accent);
-      font-weight:600;
-      border-radius:8px;
-      padding:0.45rem 0.7rem;
-      border:1px solid rgba(103,86,190,0.15);
-      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform 0.12s ease;
-    }
-
-    .project a.cta:hover{
-      background:var(--accent);
-      color:#fff;
-      transform:translateY(-2px);
-    }
-
-    .contact{
-      padding:3.5rem 5%;
-      text-align:center;
-      max-width:900px;
-      margin:0 auto 3rem;
-    }
-
-    footer{
-      text-align:center;
-      padding:2rem 5%;
-      font-size:0.9rem;
-      color:var(--text-secondary);
-      border-top:1px solid rgba(255,255,255,0.03);
-    }
-
-    @media (max-width:700px){
-      .projects h3 {
-        text-align: left;
-      }
-      .hero{text-align:left;}
-      .profile-pic{margin:0 0 1.75rem 0;}
-      .contact{text-align:left;}
-    }
-  </style>
+  <!-- CSS personalizzato -->
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-dark text-light">
 
-  <header>
-    <nav>
-      <a href="#projects">Progetti</a>
-      <a href="#contact">Contatti</a>
-    </nav>
-
-    <div class="social">
-      <a href="https://www.linkedin.com/in/leonardocofano/" target="_blank" rel="noopener noreferrer">
-        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.76-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.27h-3v-5.604c0-1.337-.025-3.061-1.866-3.061-1.867 0-2.154 1.46-2.154 2.968v5.697h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.561 2.838-1.561 3.034 0 3.594 1.997 3.594 4.59v5.604z"/>
-        </svg>
-      </a>
+  <!-- Navbar sticky -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">Leonardo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#projects">Progetti</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contatti</a></li>
+        </ul>
+        <div class="ms-3">
+          <a class="btn btn-outline-light btn-sm" href="https://www.linkedin.com/in/leonardocofano/" target="_blank">
+            LinkedIn
+          </a>
+        </div>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <main>
-    <section class="hero" id="about">
+  <!-- Hero -->
+  <section class="text-center py-5 mt-5" id="about">
+    <div class="container">
       <img src="https://github.com/leonardocofano21-ctrl/Provaport/blob/e73ef3865236d1488e0c96e38bbb91bd6a012598/FOTO_CV-min_cdkip1.jpg?raw=true"
-        alt="Foto profilo di Leonardo" class="profile-pic" />
-
+           alt="Foto profilo di Leonardo" class="rounded-circle img-fluid mb-3" style="width:160px; height:160px; object-fit:cover; border:3px solid #6756BE;">
       <h2>Ciao, mi chiamo Leonardo</h2>
-      <p>
+      <p class="mt-3">
         Il mio percorso professionale nasce dalla passione per il disegno coltivata sin da bambino e si evolve con l’interesse per il design dei prodotti Apple, riferimento importante per molti della mia generazione (2001).<br><br>
         Mi diplomo in un istituto tecnico a Bologna all’inizio della pandemia e mi laureo all’Accademia di Belle Arti in Design, dove approfondisco interior e product design. Adesso sto completando un master in UX/UI design e svolgo un tirocinio in una web agency a Bologna.
         Come progettista punto sull’empatia e sulla cura del dettaglio, perché li reputo gli elementi che trasformano un servizio digitale da buono a ottimo.
         Progetto esperienze intuitive e appaganti, con l’obiettivo di rendere la vita un pochino migliore a chi le utilizza.
       </p>
-    </section>
+    </div>
+  </section>
 
-    <section class="projects" id="projects">
-      <h3>Progetti selezionati</h3>
-      <div class="project-grid">
+  <!-- Progetti -->
+  <section class="py-5" id="projects">
+    <div class="container">
+      <h3 class="text-center mb-4">Progetti selezionati</h3>
+      <div class="row g-4">
 
-        <article class="project" aria-labelledby="p1-title">
-          <div class="project-preview">
-            <img class="preview-thumb" src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Jojob0000.png?raw=true" alt="Anteprima Jojob">
-            <div>
-              <h4 id="p1-title">Redesign Jojob</h4>
-              <p>Il redesign del sito di Jojob - carpooling aziendale. Lo trovi ai progetti 2 e 3 del mio portfolio</p>
+        <div class="col-md-4">
+          <div class="card bg-secondary text-light h-100 border-0 shadow-sm">
+            <img src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Jojob0000.png?raw=true" class="card-img-top" alt="Anteprima Jojob">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Redesign Jojob</h5>
+              <p class="card-text">Il redesign del sito di Jojob - carpooling aziendale. Lo trovi ai progetti 2 e 3 del mio portfolio</p>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
+                <span class="badge bg-dark text-secondary">UX/UI</span>
+                <a href="#" class="btn btn-outline-light btn-sm">Scopri</a>
+              </div>
             </div>
           </div>
-          <div class="project-meta">
-            <span class="pill">UX/UI</span>
-            <a class="cta" href="#" target="_blank">Scopri</a>
-          </div>
-        </article>
+        </div>
 
-        <article class="project" aria-labelledby="p2-title">
-          <div class="project-preview">
-            <img class="preview-thumb" src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Sunnee0000.jpg?raw=true" alt="Anteprima Sunnee">
-            <div>
-              <h4 id="p2-title">Brand Identity Sunnee</h4>
-              <p>Progettazione della brand identity di Sunnee, un brand di beachwear. Progetto n°7 del portfolio</p>
+        <div class="col-md-4">
+          <div class="card bg-secondary text-light h-100 border-0 shadow-sm">
+            <img src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Sunnee0000.jpg?raw=true" class="card-img-top" alt="Anteprima Sunnee">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Brand Identity Sunnee</h5>
+              <p class="card-text">Progettazione della brand identity di Sunnee, un brand di beachwear. Progetto n°7 del portfolio</p>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
+                <span class="badge bg-dark text-secondary">Graphic Design</span>
+                <a href="#" class="btn btn-outline-light btn-sm">Scopri</a>
+              </div>
             </div>
           </div>
-          <div class="project-meta">
-            <span class="pill">Graphic Design</span>
-            <a class="cta" href="#" target="_blank">Scopri</a>
-          </div>
-        </article>
+        </div>
 
-        <article class="project" aria-labelledby="p3-title">
-          <div class="project-preview">
-            <img class="preview-thumb" src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Very0000.jpg?raw=true" alt="Anteprima Very Mobile">
-            <div>
-              <h4 id="p3-title">Redesign Very Mobile</h4>
-              <p>Redesign delle pagine principali di Very Mobile. Progetto n°1 del portfolio</p>
+        <div class="col-md-4">
+          <div class="card bg-secondary text-light h-100 border-0 shadow-sm">
+            <img src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Very0000.jpg?raw=true" class="card-img-top" alt="Anteprima Very Mobile">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Redesign Very Mobile</h5>
+              <p class="card-text">Redesign delle pagine principali di Very Mobile. Progetto n°1 del portfolio</p>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
+                <span class="badge bg-dark text-secondary">UX/UI</span>
+                <a href="#" class="btn btn-outline-light btn-sm">Scopri</a>
+              </div>
             </div>
           </div>
-          <div class="project-meta">
-            <span class="pill">UX/UI</span>
-            <a class="cta" href="#" target="_blank">Scopri</a>
-          </div>
-        </article>
+        </div>
 
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="contact" id="contact">
+  <!-- Contatti -->
+  <section class="py-5" id="contact">
+    <div class="container text-center">
       <h3>Contatti</h3>
       <p>Scrivimi a</p>
-      <a href="mailto:leonardocofano21@gmail.com">leonardocofano21@gmail.com</a>
-      <p class="phone">+39 3483345975</p>
-    </section>
-  </main>
+      <a href="mailto:leonardocofano21@gmail.com" class="text-decoration-none text-light">leonardocofano21@gmail.com</a>
+      <p class="mt-2">+39 3483345975</p>
+    </div>
+  </section>
 
-  <footer>
-    © 2025 Contenuti protetti, se ti piacciono chiedimi prima di rubarli (sono educato, giuro).
+  <!-- Footer -->
+  <footer class="text-center py-3 border-top border-secondary">
+    © 2025 Contenuti protetti, se ti piacciono chiedimi prima di rubarli.
   </footer>
 
-  <script>
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-      if(window.scrollY > 50){
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-  </script>
-
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
