@@ -20,7 +20,7 @@
       --linkedin-hover: #0072B1;
     }
 
-    *{box-sizing:border-box}
+    *{ box-sizing: border-box; }
 
     body{
       margin:0;
@@ -55,7 +55,12 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
 
-    nav{display:flex; gap:0.25rem; align-items:center;}
+    nav{
+      display:flex;
+      gap:0.25rem;
+      align-items:center;
+    }
+
     nav a, .social a{
       margin:0 0.25rem;
       text-decoration:none;
@@ -73,9 +78,10 @@
       background:var(--accent);
       color:#fff;
     }
+
     nav a:hover{
       background:var(--accent);
-      color:white;
+      color:#fff;
       transform:translateY(-2px);
       box-shadow: 0 6px 18px rgba(103,86,190,0.15);
     }
@@ -92,6 +98,18 @@
     .social a svg{
       flex-shrink: 0;
       display: block;
+    }
+
+    /* 👇 HOVER BLU LINKEDIN INTEGRATO */
+    .social a:hover svg {
+      color: #fff;
+    }
+
+    .social a:hover {
+      background: var(--linkedin-hover);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 114, 177, 0.18);
     }
 
     .hero{
@@ -225,15 +243,14 @@
     }
 
     @media (max-width:700px){
-      .projects h3 {
-        text-align: left;
-      }
+      .projects h3{text-align:left;}
       .hero{text-align:left;}
       .profile-pic{margin:0 0 1.75rem 0;}
       .contact{text-align:left;}
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -244,25 +261,17 @@
 
     <div class="social">
       <a href="https://www.linkedin.com/in/leonardocofano/" target="_blank" rel="noopener noreferrer">
-  <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.76-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.27h-3v-5.604c0-1.337-.025-3.061-1.866-3.061-1.867 0-2.154 1.46-2.154 2.968v5.697h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.561 2.838-1.561 3.034 0 3.594 1.997 3.594 4.59v5.604z"/>
-    </svg>
-    </a>
+        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.76-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.27h-3v-5.604c0-1.337-.025-3.061-1.866-3.061-1.867 0-2.154 1.46-2.154 2.968v5.697h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.561 2.838-1.561 3.034 0 3.594 1.997 3.594 4.59v5.604z"/>
+        </svg>
+      </a>
     </div>
   </header>
 
   <main>
     <section class="hero" id="about">
-      <img src="https://github.com/leonardocofano21-ctrl/Provaport/blob/e73ef3865236d1488e0c96e38bbb91bd6a012598/FOTO_CV-min_cdkip1.jpg?raw=true"
-        alt="Foto profilo di Leonardo" class="profile-pic" />
-
+      <img src="FOTO_CV.jpg" alt="Foto profilo di Leonardo" class="profile-pic" />
       <h2>Ciao, mi chiamo Leonardo</h2>
-      <p>
-        Il mio percorso professionale nasce dalla passione per il disegno coltivata sin da bambino e si evolve con l’interesse per il design dei prodotti Apple, riferimento importante per molti della mia generazione (2001).<br><br>
-        Mi diplomo in un istituto tecnico a Bologna all’inizio della pandemia e mi laureo all’Accademia di Belle Arti in Design, dove approfondisco interior e product design. Adesso sto completando un master in UX/UI design e svolgo un tirocinio in una web agency a Bologna.
-        Come progettista punto sull’empatia e sulla cura del dettaglio, perché li reputo gli elementi che trasformano un servizio digitale da buono a ottimo.
-        Progetto esperienze intuitive e appaganti, con l’obiettivo di rendere la vita un pochino migliore a chi le utilizza.
-      </p>
     </section>
 
     <section class="projects" id="projects">
@@ -271,43 +280,15 @@
 
         <article class="project" aria-labelledby="p1-title">
           <div class="project-preview">
-            <img class="preview-thumb" src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Jojob0000.png?raw=true" alt="Anteprima Jojob">
+            <img class="preview-thumb" src="Jojob0000.png" alt="Anteprima Jojob">
             <div>
               <h4 id="p1-title">Redesign Jojob</h4>
-              <p>Il redesign del sito di Jojob - carpooling aziendale. Lo trovi ai progetti 2 e 3 del mio portfolio</p>
+              <p>Il redesign del sito di Jojob - carpooling aziendale</p>
             </div>
           </div>
           <div class="project-meta">
             <span class="pill">UX/UI</span>
-            <a class="cta" href="https://www.canva.com/design/DAGwgC73ckU/PRM7tf_RUlgKt7qBxyPsXw/edit?utm_content=DAGwgC73ckU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Scopri</a>
-          </div>
-        </article>
-
-        <article class="project" aria-labelledby="p2-title">
-          <div class="project-preview">
-            <img class="preview-thumb" src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Sunnee0000.jpg?raw=true" alt="Anteprima Sunnee">
-            <div>
-              <h4 id="p2-title">Brand Identity Sunnee</h4>
-              <p>Progettazione della brand identity di Sunnee, un brand di beachwear. Progetto n°7 del portfolio</p>
-            </div>
-          </div>
-          <div class="project-meta">
-            <span class="pill">Graphic Design</span>
-            <a class="cta" href="https://www.canva.com/design/DAGwgC73ckU/PRM7tf_RUlgKt7qBxyPsXw/edit?utm_content=DAGwgC73ckU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Scopri</a>
-          </div>
-        </article>
-
-        <article class="project" aria-labelledby="p3-title">
-          <div class="project-preview">
-            <img class="preview-thumb" src="https://github.com/leonardocofano21-ctrl/Provaport/blob/master/Very0000.jpg?raw=true" alt="Anteprima Very Mobile">
-            <div>
-              <h4 id="p3-title">Redesign Very Mobile</h4>
-              <p>Redesign delle pagine principali di Very Mobile. Progetto n°1 del portfolio</p>
-            </div>
-          </div>
-          <div class="project-meta">
-            <span class="pill">UX/UI</span>
-            <a class="cta" href="https://www.canva.com/design/DAGwgC73ckU/PRM7tf_RUlgKt7qBxyPsXw/edit?utm_content=DAGwgC73ckU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Scopri</a>
+            <a class="cta" href="#">Scopri</a>
           </div>
         </article>
 
@@ -323,7 +304,7 @@
   </main>
 
   <footer>
-    © 2025 Contenuti protetti, se ti piacciono chiedimi prima di rubarli (sono educato, giuro).
+    © 2025 · Chiedi prima di rubare (sono educato, giuro)
   </footer>
 
   <script>
@@ -338,7 +319,7 @@
       const sections = document.querySelectorAll('main section');
       const navLinks = document.querySelectorAll('nav a');
 
-      sections.forEach((section) => {
+      sections.forEach(section => {
         const rect = section.getBoundingClientRect();
         const id = section.getAttribute('id');
         if(rect.top <= 100 && rect.bottom >= 100){
